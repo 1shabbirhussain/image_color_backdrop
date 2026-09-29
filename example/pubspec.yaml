@@ -1,0 +1,22 @@
+name: image_color_backdrop_example
+description: "Example app for the image_color_backdrop package: gallery, live playground and use-the-color-elsewhere demos."
+publish_to: none
+version: 1.0.0
+
+environment:
+  sdk: ^3.7.0
+  flutter: ">=3.29.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  image_color_backdrop:
+    path: ../
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/samples/

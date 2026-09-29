@@ -1,0 +1,33 @@
+name: image_color_backdrop
+description: Extracts the dominant, vibrant or muted color from an image, icon or logo and turns it into a background color with opacity, tint, contrast and gradient controls.
+version: 0.1.0
+repository: https://github.com/1shabbirhussain/image_color_backdrop
+issue_tracker: https://github.com/1shabbirhussain/image_color_backdrop/issues
+
+topics:
+  - color
+  - image
+  - palette
+  - background
+  - widget
+
+environment:
+  sdk: ^3.7.0
+  flutter: ">=3.29.0"
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
