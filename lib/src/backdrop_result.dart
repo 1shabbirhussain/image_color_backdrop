@@ -92,9 +92,9 @@ class BackdropResult {
   /// A subtle two-color gradient built from [color]: slightly lighter to
   /// slightly darker. [amount] (0–1) controls how far the colors move.
   List<Color> tonalGradient({double amount = 0.15}) => <Color>[
-        BackdropColorUtils.lighten(color, amount),
-        BackdropColorUtils.darken(color, amount),
-      ];
+    BackdropColorUtils.lighten(color, amount),
+    BackdropColorUtils.darken(color, amount),
+  ];
 
   /// A two-color gradient from [color] to the most prominent *other* color
   /// of the image (styled the same way). Falls back to [tonalGradient] when
@@ -119,6 +119,7 @@ class BackdropResult {
   int get hashCode => Object.hash(color, sourceColor, isFallback, palette);
 
   @override
-  String toString() => 'BackdropResult(color: $color, '
+  String toString() =>
+      'BackdropResult(color: $color, '
       'sourceColor: $sourceColor, isFallback: $isFallback)';
 }

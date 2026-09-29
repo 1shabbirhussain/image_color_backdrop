@@ -1,5 +1,3 @@
-import 'dart:ui' show Color;
-
 import 'package:flutter/widgets.dart';
 
 import 'backdrop_options.dart';
@@ -34,8 +32,8 @@ class BackdropController extends ChangeNotifier {
     BackdropOptions options = const BackdropOptions(),
     BackdropStyle style = BackdropStyle.original,
     ImageProvider? image,
-  })  : _options = options,
-        _style = style {
+  }) : _options = options,
+       _style = style {
     if (image != null) {
       load(image);
     }
@@ -72,7 +70,11 @@ class BackdropController extends ChangeNotifier {
     if (palette == null) {
       return BackdropResult.fallback(options: _options, style: _style);
     }
-    return BackdropResult.fromPalette(palette, options: _options, style: _style);
+    return BackdropResult.fromPalette(
+      palette,
+      options: _options,
+      style: _style,
+    );
   }
 
   /// The final, styled backdrop color.

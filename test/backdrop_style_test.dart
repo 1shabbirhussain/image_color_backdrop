@@ -17,8 +17,9 @@ void main() {
       expect(result.a, closeTo(0.5, 0.01));
       expect(BackdropColorUtils.red(result), BackdropColorUtils.red(blue));
 
-      final twice = const BackdropStyle(opacity: 0.5)
-          .apply(blue.withValues(alpha: 0.5));
+      final twice = const BackdropStyle(
+        opacity: 0.5,
+      ).apply(blue.withValues(alpha: 0.5));
       expect(twice.a, closeTo(0.25, 0.01));
     });
 
@@ -45,8 +46,10 @@ void main() {
 
     test('blendAmount 1 replaces the color with the blend color', () {
       const orange = Color(0xFFFF9800);
-      final result =
-          const BackdropStyle(blendColor: orange, blendAmount: 1).apply(blue);
+      final result = const BackdropStyle(
+        blendColor: orange,
+        blendAmount: 1,
+      ).apply(blue);
       expect(result, orange);
     });
 
@@ -64,7 +67,10 @@ void main() {
     });
 
     test('supports value equality and copyWith', () {
-      expect(const BackdropStyle(opacity: 0.4), const BackdropStyle(opacity: 0.4));
+      expect(
+        const BackdropStyle(opacity: 0.4),
+        const BackdropStyle(opacity: 0.4),
+      );
       expect(
         const BackdropStyle(opacity: 0.4).copyWith(brightness: 0.1),
         const BackdropStyle(opacity: 0.4, brightness: 0.1),
@@ -84,16 +90,19 @@ void main() {
       );
     });
 
-    test('readableOn picks a light color on dark and a dark color on light', () {
-      expect(
-        BackdropColorUtils.readableOn(const Color(0xFF101010)),
-        const Color(0xFFFFFFFF),
-      );
-      expect(
-        BackdropColorUtils.readableOn(const Color(0xFFF5F5F5)),
-        const Color(0xFF111111),
-      );
-    });
+    test(
+      'readableOn picks a light color on dark and a dark color on light',
+      () {
+        expect(
+          BackdropColorUtils.readableOn(const Color(0xFF101010)),
+          const Color(0xFFFFFFFF),
+        );
+        expect(
+          BackdropColorUtils.readableOn(const Color(0xFFF5F5F5)),
+          const Color(0xFF111111),
+        );
+      },
+    );
 
     test('readableOn considers the surface behind translucent colors', () {
       final translucent = const Color(0xFF000000).withValues(alpha: 0.1);

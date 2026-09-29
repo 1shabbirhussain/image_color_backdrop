@@ -104,11 +104,11 @@ class ImageBackdrop extends StatelessWidget {
     this.onError,
     super.key,
   }) : child = Image(
-          image: image,
-          fit: fit,
-          width: imageWidth,
-          height: imageHeight,
-        );
+         image: image,
+         fit: fit,
+         width: imageWidth,
+         height: imageHeight,
+       );
 
   /// The image the color is picked from.
   final ImageProvider image;

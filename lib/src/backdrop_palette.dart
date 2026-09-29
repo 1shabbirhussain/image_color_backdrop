@@ -13,10 +13,10 @@ import 'palette_swatch.dart';
 class BackdropPalette {
   /// Creates a palette from [swatches]. They are sorted by population.
   BackdropPalette(Iterable<PaletteSwatch> swatches)
-      : swatches = List<PaletteSwatch>.unmodifiable(
-          (List<PaletteSwatch>.of(swatches))
-            ..sort((a, b) => b.population.compareTo(a.population)),
-        );
+    : swatches = List<PaletteSwatch>.unmodifiable(
+        (List<PaletteSwatch>.of(swatches))
+          ..sort((a, b) => b.population.compareTo(a.population)),
+      );
 
   /// A palette without any color, for example for a fully transparent image.
   static final BackdropPalette empty = BackdropPalette(const <PaletteSwatch>[]);
@@ -73,9 +73,13 @@ class BackdropPalette {
       case BackdropStrategy.average:
         return _averageSwatch();
       case BackdropStrategy.lightest:
-        return _significant().reduce((a, b) => b.lightness > a.lightness ? b : a);
+        return _significant().reduce(
+          (a, b) => b.lightness > a.lightness ? b : a,
+        );
       case BackdropStrategy.darkest:
-        return _significant().reduce((a, b) => b.lightness < a.lightness ? b : a);
+        return _significant().reduce(
+          (a, b) => b.lightness < a.lightness ? b : a,
+        );
     }
   }
 
@@ -98,16 +102,18 @@ class BackdropPalette {
   /// Swatches that cover at least 2% of the image (or all of them when none
   /// does), so that a few stray pixels never win "lightest"/"darkest".
   List<PaletteSwatch> _significant() {
-    final significant =
-        swatches.where((s) => s.proportion >= 0.02).toList(growable: false);
+    final significant = swatches
+        .where((s) => s.proportion >= 0.02)
+        .toList(growable: false);
     return significant.isEmpty ? swatches : significant;
   }
 
   double _midLightness(PaletteSwatch s) => 1 - ((s.lightness - 0.5).abs() * 2);
 
   PaletteSwatch _bestBy(double Function(PaletteSwatch, double) score) {
-    final significant =
-        swatches.where((s) => s.proportion >= 0.005).toList(growable: false);
+    final significant = swatches
+        .where((s) => s.proportion >= 0.005)
+        .toList(growable: false);
     final candidates = significant.isEmpty ? swatches : significant;
     final maxPopulation = candidates.map((s) => s.population).reduce(math.max);
     var best = candidates.first;
@@ -145,6 +151,7 @@ class BackdropPalette {
   }
 
   @override
-  String toString() => 'BackdropPalette(${swatches.length} swatches: '
+  String toString() =>
+      'BackdropPalette(${swatches.length} swatches: '
       '${swatches.map((s) => s.color).join(', ')})';
 }

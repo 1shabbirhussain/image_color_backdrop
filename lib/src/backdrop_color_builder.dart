@@ -8,10 +8,8 @@ import 'image_color_backdrop.dart';
 
 /// Signature of the function that builds the widget tree of a
 /// [BackdropColorBuilder] from the current [BackdropResult].
-typedef BackdropWidgetBuilder = Widget Function(
-  BuildContext context,
-  BackdropResult result,
-);
+typedef BackdropWidgetBuilder =
+    Widget Function(BuildContext context, BackdropResult result);
 
 /// Analyzes an image and rebuilds with its backdrop color.
 ///
@@ -90,8 +88,8 @@ class _BackdropColorBuilderState extends State<BackdropColorBuilder> {
   void didUpdateWidget(BackdropColorBuilder oldWidget) {
     super.didUpdateWidget(oldWidget);
     final imageChanged = widget.image != oldWidget.image;
-    final samplingChanged = widget.options.samplingSignature !=
-        oldWidget.options.samplingSignature;
+    final samplingChanged =
+        widget.options.samplingSignature != oldWidget.options.samplingSignature;
     if (imageChanged || samplingChanged) {
       _load();
     }

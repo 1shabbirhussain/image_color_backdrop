@@ -164,7 +164,8 @@ abstract final class ColorQuantizer {
             b <= _nearBlack) {
           continue;
         }
-        final bin = ((r >> _shift) << (_bitsPerChannel * 2)) |
+        final bin =
+            ((r >> _shift) << (_bitsPerChannel * 2)) |
             ((g >> _shift) << _bitsPerChannel) |
             (b >> _shift);
         counts[bin]++;
@@ -205,8 +206,13 @@ class _Box {
       if (b > maxB) maxB = b;
       population += counts[bin];
     }
-    return _Box._(bins, population, maxR - minR + 1, maxG - minG + 1,
-        maxB - minB + 1);
+    return _Box._(
+      bins,
+      population,
+      maxR - minR + 1,
+      maxG - minG + 1,
+      maxB - minB + 1,
+    );
   }
 
   _Box._(this.bins, this.population, this.rangeR, this.rangeG, this.rangeB);

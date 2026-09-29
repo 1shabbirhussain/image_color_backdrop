@@ -44,12 +44,18 @@ class BackdropOptions {
     this.ignoreNearWhite = false,
     this.ignoreNearBlack = false,
     this.fallbackColor = const Color(0xFFE0E0E0),
-  })  : assert(colorCount >= 1 && colorCount <= 64,
-            'colorCount must be between 1 and 64'),
-        assert(maxDimension >= 8 && maxDimension <= 1024,
-            'maxDimension must be between 8 and 1024'),
-        assert(alphaThreshold >= 0 && alphaThreshold <= 255,
-            'alphaThreshold must be between 0 and 255');
+  }) : assert(
+         colorCount >= 1 && colorCount <= 64,
+         'colorCount must be between 1 and 64',
+       ),
+       assert(
+         maxDimension >= 8 && maxDimension <= 1024,
+         'maxDimension must be between 8 and 1024',
+       ),
+       assert(
+         alphaThreshold >= 0 && alphaThreshold <= 255,
+         'alphaThreshold must be between 0 and 255',
+       );
 
   /// Which color of the palette becomes the backdrop color.
   ///
@@ -95,13 +101,13 @@ class BackdropOptions {
   /// Options with an equal signature can share a cached palette, even when
   /// their [strategy] or [fallbackColor] differ.
   (BackdropRegion, int, int, int, bool, bool) get samplingSignature => (
-        region,
-        colorCount,
-        maxDimension,
-        alphaThreshold,
-        ignoreNearWhite,
-        ignoreNearBlack,
-      );
+    region,
+    colorCount,
+    maxDimension,
+    alphaThreshold,
+    ignoreNearWhite,
+    ignoreNearBlack,
+  );
 
   /// Returns a copy with the given fields replaced.
   BackdropOptions copyWith({
@@ -137,7 +143,8 @@ class BackdropOptions {
   int get hashCode => Object.hash(strategy, samplingSignature, fallbackColor);
 
   @override
-  String toString() => 'BackdropOptions(strategy: $strategy, region: $region, '
+  String toString() =>
+      'BackdropOptions(strategy: $strategy, region: $region, '
       'colorCount: $colorCount, maxDimension: $maxDimension, '
       'alphaThreshold: $alphaThreshold, ignoreNearWhite: $ignoreNearWhite, '
       'ignoreNearBlack: $ignoreNearBlack, fallbackColor: $fallbackColor)';

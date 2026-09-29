@@ -28,11 +28,11 @@ class BackdropRegion {
     required this.top,
     required this.right,
     required this.bottom,
-  })  : borderThickness = 0,
-        assert(left >= 0 && left < right, 'left must be in [0, right)'),
-        assert(top >= 0 && top < bottom, 'top must be in [0, bottom)'),
-        assert(right <= 1, 'right must be at most 1'),
-        assert(bottom <= 1, 'bottom must be at most 1');
+  }) : borderThickness = 0,
+       assert(left >= 0 && left < right, 'left must be in [0, right)'),
+       assert(top >= 0 && top < bottom, 'top must be in [0, bottom)'),
+       assert(right <= 1, 'right must be at most 1'),
+       assert(bottom <= 1, 'bottom must be at most 1');
 
   /// A frame around the image border, [thickness] wide on every side.
   ///
@@ -40,22 +40,27 @@ class BackdropRegion {
   /// This is the best region for logos and icons, because their background
   /// color is usually what touches the border.
   const BackdropRegion.border({double thickness = 0.12})
-      : left = 0,
-        top = 0,
-        right = 1,
-        bottom = 1,
-        borderThickness = thickness,
-        assert(
-          thickness > 0 && thickness <= 0.5,
-          'thickness must be in (0, 0.5]',
-        );
+    : left = 0,
+      top = 0,
+      right = 1,
+      bottom = 1,
+      borderThickness = thickness,
+      assert(
+        thickness > 0 && thickness <= 0.5,
+        'thickness must be in (0, 0.5]',
+      );
 
   /// The whole image (default).
   static const BackdropRegion whole = BackdropRegion._(0, 0, 1, 1, 0);
 
   /// The central half of the image (25% margin on each side).
-  static const BackdropRegion center =
-      BackdropRegion._(0.25, 0.25, 0.75, 0.75, 0);
+  static const BackdropRegion center = BackdropRegion._(
+    0.25,
+    0.25,
+    0.75,
+    0.75,
+    0,
+  );
 
   /// A thin frame (12% of the image size) around the image border.
   static const BackdropRegion edges = BackdropRegion._(0, 0, 1, 1, 0.12);
@@ -64,15 +69,19 @@ class BackdropRegion {
   static const BackdropRegion topQuarter = BackdropRegion._(0, 0, 1, 0.25, 0);
 
   /// The bottom quarter of the image.
-  static const BackdropRegion bottomQuarter =
-      BackdropRegion._(0, 0.75, 1, 1, 0);
+  static const BackdropRegion bottomQuarter = BackdropRegion._(
+    0,
+    0.75,
+    1,
+    1,
+    0,
+  );
 
   /// The left quarter of the image.
   static const BackdropRegion leftQuarter = BackdropRegion._(0, 0, 0.25, 1, 0);
 
   /// The right quarter of the image.
-  static const BackdropRegion rightQuarter =
-      BackdropRegion._(0.75, 0, 1, 1, 0);
+  static const BackdropRegion rightQuarter = BackdropRegion._(0.75, 0, 1, 1, 0);
 
   /// Left edge of the sampled rectangle (normalized).
   final double left;

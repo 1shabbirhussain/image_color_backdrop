@@ -74,8 +74,12 @@ abstract final class ImageColorBackdrop {
       return pending;
     }
 
-    final future =
-        _extractFromProvider(provider, options, configuration, timeout);
+    final future = _extractFromProvider(
+      provider,
+      options,
+      configuration,
+      timeout,
+    );
     _pending[key] = future;
     try {
       final palette = await future;
@@ -269,7 +273,10 @@ abstract final class ImageColorBackdrop {
     if (data == null) {
       throw StateError('Could not read the pixels of the image.');
     }
-    final rgba = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    final rgba = data.buffer.asUint8List(
+      data.offsetInBytes,
+      data.lengthInBytes,
+    );
     return paletteFromRgba(
       rgba,
       width: image.width,

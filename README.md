@@ -77,7 +77,7 @@ or run:
 flutter pub add image_color_backdrop
 ```
 
-Requires Flutter 3.29 or newer (Dart 3.7).
+Requires Flutter 3.32 or newer (Dart 3.8).
 
 ```dart
 import 'package:image_color_backdrop/image_color_backdrop.dart';

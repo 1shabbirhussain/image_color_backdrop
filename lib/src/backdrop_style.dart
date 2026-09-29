@@ -28,15 +28,23 @@ class BackdropStyle {
     this.blendAmount = 0.0,
     this.ensureContrastWith,
     this.minContrastRatio = 3.0,
-  })  : assert(opacity >= 0 && opacity <= 1, 'opacity must be in [0, 1]'),
-        assert(brightness >= -1 && brightness <= 1,
-            'brightness must be in [-1, 1]'),
-        assert(saturation >= -1 && saturation <= 1,
-            'saturation must be in [-1, 1]'),
-        assert(blendAmount >= 0 && blendAmount <= 1,
-            'blendAmount must be in [0, 1]'),
-        assert(minContrastRatio >= 1 && minContrastRatio <= 21,
-            'minContrastRatio must be in [1, 21]');
+  }) : assert(opacity >= 0 && opacity <= 1, 'opacity must be in [0, 1]'),
+       assert(
+         brightness >= -1 && brightness <= 1,
+         'brightness must be in [-1, 1]',
+       ),
+       assert(
+         saturation >= -1 && saturation <= 1,
+         'saturation must be in [-1, 1]',
+       ),
+       assert(
+         blendAmount >= 0 && blendAmount <= 1,
+         'blendAmount must be in [0, 1]',
+       ),
+       assert(
+         minContrastRatio >= 1 && minContrastRatio <= 21,
+         'minContrastRatio must be in [1, 21]',
+       );
 
   /// The picked color, unchanged.
   static const BackdropStyle original = BackdropStyle();
@@ -45,15 +53,19 @@ class BackdropStyle {
   static const BackdropStyle soft = BackdropStyle(opacity: 0.18);
 
   /// A light, pastel version of the color.
-  static const BackdropStyle pastel =
-      BackdropStyle(brightness: 0.7, saturation: -0.1);
+  static const BackdropStyle pastel = BackdropStyle(
+    brightness: 0.7,
+    saturation: -0.1,
+  );
 
   /// A darker, richer version of the color.
   static const BackdropStyle deep = BackdropStyle(brightness: -0.35);
 
   /// A desaturated, slightly lightened version of the color.
-  static const BackdropStyle subdued =
-      BackdropStyle(saturation: -0.5, brightness: 0.15);
+  static const BackdropStyle subdued = BackdropStyle(
+    saturation: -0.5,
+    brightness: 0.15,
+  );
 
   /// Multiplies the color's alpha. `1.0` is opaque (default), `0.0` is fully
   /// transparent.
@@ -161,17 +173,18 @@ class BackdropStyle {
 
   @override
   int get hashCode => Object.hash(
-        opacity,
-        brightness,
-        saturation,
-        blendColor,
-        blendAmount,
-        ensureContrastWith,
-        minContrastRatio,
-      );
+    opacity,
+    brightness,
+    saturation,
+    blendColor,
+    blendAmount,
+    ensureContrastWith,
+    minContrastRatio,
+  );
 
   @override
-  String toString() => 'BackdropStyle(opacity: $opacity, '
+  String toString() =>
+      'BackdropStyle(opacity: $opacity, '
       'brightness: $brightness, saturation: $saturation, '
       'blendColor: $blendColor, blendAmount: $blendAmount, '
       'ensureContrastWith: $ensureContrastWith, '

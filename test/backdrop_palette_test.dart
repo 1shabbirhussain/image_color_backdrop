@@ -4,10 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:image_color_backdrop/image_color_backdrop.dart';
 
 PaletteSwatch swatch(Color color, int population, int total) => PaletteSwatch(
-      color: color,
-      population: population,
-      proportion: population / total,
-    );
+  color: color,
+  population: population,
+  proportion: population / total,
+);
 
 void main() {
   const gray = Color(0xFF9E9E9E);
@@ -25,7 +25,12 @@ void main() {
   group('BackdropPalette', () {
     test('sorts swatches by population', () {
       expect(palette.swatches.first.color, gray);
-      expect(palette.swatches.map((s) => s.population), <int>[600, 200, 100, 100]);
+      expect(palette.swatches.map((s) => s.population), <int>[
+        600,
+        200,
+        100,
+        100,
+      ]);
     });
 
     test('dominant is the most populous color', () {
@@ -64,10 +69,7 @@ void main() {
         swatch(red, 4, 20),
       ]);
       expect(similar.secondaryTo(const Color(0xFF808080))!.color, red);
-      expect(
-        BackdropPalette([swatch(gray, 1, 1)]).secondaryTo(gray),
-        isNull,
-      );
+      expect(BackdropPalette([swatch(gray, 1, 1)]).secondaryTo(gray), isNull);
     });
   });
 
@@ -107,8 +109,10 @@ void main() {
       const b = BackdropOptions(strategy: BackdropStrategy.vibrant);
       expect(a.samplingSignature, b.samplingSignature);
       expect(a, isNot(b));
-      expect(a.copyWith(colorCount: 4).samplingSignature,
-          isNot(a.samplingSignature));
+      expect(
+        a.copyWith(colorCount: 4).samplingSignature,
+        isNot(a.samplingSignature),
+      );
     });
   });
 

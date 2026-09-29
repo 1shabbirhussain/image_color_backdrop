@@ -22,8 +22,9 @@ void main() {
 
   setUp(() => ImageColorBackdrop.cache.clear());
 
-  testWidgets('BackdropColorBuilder starts with the fallback, then the color',
-      (tester) async {
+  testWidgets('BackdropColorBuilder starts with the fallback, then the color', (
+    tester,
+  ) async {
     final Uint8List bytes = (await tester.runAsync(() => solidPng(red)))!;
     final seen = <BackdropResult>[];
 
@@ -49,8 +50,9 @@ void main() {
     expect(seen.last.color, red);
   });
 
-  testWidgets('BackdropColorBuilder reports errors and keeps the fallback',
-      (tester) async {
+  testWidgets('BackdropColorBuilder reports errors and keeps the fallback', (
+    tester,
+  ) async {
     Object? error;
     BackdropResult? last;
 
@@ -94,8 +96,9 @@ void main() {
     expect(find.text('Hello'), findsOneWidget);
   });
 
-  testWidgets('BackdropController exposes the color and reacts to style',
-      (tester) async {
+  testWidgets('BackdropController exposes the color and reacts to style', (
+    tester,
+  ) async {
     final Uint8List bytes = (await tester.runAsync(() => solidPng(red)))!;
     final controller = BackdropController();
     addTearDown(controller.dispose);

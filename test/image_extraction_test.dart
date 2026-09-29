@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,9 +24,9 @@ void main() {
   testWidgets('applies the style to the returned color', (tester) async {
     final color = await tester.runAsync(() async {
       final bytes = await solidPng(red);
-      return MemoryImage(bytes).backdropColor(
-        style: const BackdropStyle(opacity: 0.5),
-      );
+      return MemoryImage(
+        bytes,
+      ).backdropColor(style: const BackdropStyle(opacity: 0.5));
     });
     expect(color!.a, closeTo(0.5, 0.01));
   });
@@ -56,7 +55,9 @@ void main() {
       final bytes = await solidPng(red);
       final provider = MemoryImage(bytes);
       final first = await ImageColorBackdrop.paletteFromImageProvider(provider);
-      final second = await ImageColorBackdrop.paletteFromImageProvider(provider);
+      final second = await ImageColorBackdrop.paletteFromImageProvider(
+        provider,
+      );
       expect(identical(first, second), isTrue);
       expect(ImageColorBackdrop.cache.length, 1);
 
@@ -83,7 +84,7 @@ void main() {
   });
 
   test('paletteFromRgba is synchronous', () {
-    final rgba = buildRgba(4, 4, (_, __) => red);
+    final rgba = buildRgba(4, 4, (_, _) => red);
     final palette = ImageColorBackdrop.paletteFromRgba(
       rgba,
       width: 4,

@@ -10,7 +10,7 @@ import 'backdrop_palette.dart';
 class BackdropCache {
   /// Creates a cache that keeps at most [maximumSize] palettes.
   BackdropCache({this.maximumSize = 128})
-      : assert(maximumSize >= 0, 'maximumSize must not be negative');
+    : assert(maximumSize >= 0, 'maximumSize must not be negative');
 
   final LinkedHashMap<Object, BackdropPalette> _entries =
       LinkedHashMap<Object, BackdropPalette>();

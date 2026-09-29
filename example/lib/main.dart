@@ -5,11 +5,17 @@ void main() => runApp(const ExampleApp());
 
 /// The sample images bundled with the example app.
 const List<({String label, String asset})> samples = [
-  (label: 'Coral bolt (transparent PNG)', asset: 'assets/samples/coral_bolt.png'),
+  (
+    label: 'Coral bolt (transparent PNG)',
+    asset: 'assets/samples/coral_bolt.png',
+  ),
   (label: 'Teal ring (transparent PNG)', asset: 'assets/samples/teal_ring.png'),
   (label: 'Amber hexagon', asset: 'assets/samples/amber_hex.png'),
   (label: 'Purple badge', asset: 'assets/samples/purple_badge.png'),
-  (label: 'Indigo diamond (full bleed)', asset: 'assets/samples/indigo_diamond.png'),
+  (
+    label: 'Indigo diamond (full bleed)',
+    asset: 'assets/samples/indigo_diamond.png',
+  ),
   (label: 'Green apple on white', asset: 'assets/samples/green_on_white.png'),
   (label: 'White mark on dark', asset: 'assets/samples/white_on_dark.png'),
   (label: 'Sunset', asset: 'assets/samples/sunset.png'),
@@ -22,10 +28,7 @@ class ExampleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'image_color_backdrop',
-      theme: ThemeData(
-        colorSchemeSeed: Colors.indigo,
-        useMaterial3: true,
-      ),
+      theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),
       darkTheme: ThemeData(
         colorSchemeSeed: Colors.indigo,
         brightness: Brightness.dark,
@@ -132,7 +135,7 @@ class GalleryPage extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: samples.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 12),
+        separatorBuilder: (_, _) => const SizedBox(width: 12),
         itemBuilder: (context, i) => ImageBackdrop.image(
           image: AssetImage(samples[i].asset),
           options: options,
@@ -269,20 +272,30 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
           onChanged: (v) => setState(() => _edges = v),
         ),
         _slider('opacity', _opacity, 0, 1, (v) => setState(() => _opacity = v)),
-        _slider('brightness', _brightness, -1, 1,
-            (v) => setState(() => _brightness = v)),
-        _slider('saturation', _saturation, -1, 1,
-            (v) => setState(() => _saturation = v)),
+        _slider(
+          'brightness',
+          _brightness,
+          -1,
+          1,
+          (v) => setState(() => _brightness = v),
+        ),
+        _slider(
+          'saturation',
+          _saturation,
+          -1,
+          1,
+          (v) => setState(() => _saturation = v),
+        ),
       ],
     );
   }
 
   Widget _labeled(String label, Widget child) => Row(
-        children: [
-          SizedBox(width: 90, child: Text(label)),
-          Expanded(child: child),
-        ],
-      );
+    children: [
+      SizedBox(width: 90, child: Text(label)),
+      Expanded(child: child),
+    ],
+  );
 
   Widget _slider(
     String label,
@@ -295,12 +308,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
       children: [
         SizedBox(width: 90, child: Text(label)),
         Expanded(
-          child: Slider(
-            value: value,
-            min: min,
-            max: max,
-            onChanged: onChanged,
-          ),
+          child: Slider(value: value, min: min, max: max, onChanged: onChanged),
         ),
         SizedBox(width: 44, child: Text(value.toStringAsFixed(2))),
       ],

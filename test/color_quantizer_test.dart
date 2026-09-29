@@ -12,7 +12,7 @@ void main() {
 
   group('ColorQuantizer', () {
     test('a solid image yields exactly its color', () {
-      final rgba = buildRgba(10, 10, (_, __) => red);
+      final rgba = buildRgba(10, 10, (_, _) => red);
       final swatches = ColorQuantizer.quantize(rgba, width: 10, height: 10);
 
       expect(swatches, hasLength(1));
@@ -72,7 +72,7 @@ void main() {
     });
 
     test('a fully transparent image yields no swatches', () {
-      final rgba = buildRgba(4, 4, (_, __) => const Color(0x00000000));
+      final rgba = buildRgba(4, 4, (_, _) => const Color(0x00000000));
       expect(ColorQuantizer.quantize(rgba, width: 4, height: 4), isEmpty);
     });
 
@@ -98,7 +98,7 @@ void main() {
     });
 
     test('filters are dropped when they would remove every pixel', () {
-      final rgba = buildRgba(6, 6, (_, __) => white);
+      final rgba = buildRgba(6, 6, (_, _) => white);
       final swatches = ColorQuantizer.quantize(
         rgba,
         width: 6,

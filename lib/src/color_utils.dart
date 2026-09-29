@@ -22,7 +22,8 @@ abstract final class BackdropColorUtils {
   /// The 8-bit (0–255) alpha channel of [color].
   static int alpha(Color color) => _to8(color.a);
 
-  static int _to8(double value) => (value * 255.0).round().clamp(0, 255).toInt();
+  static int _to8(double value) =>
+      (value * 255.0).round().clamp(0, 255).toInt();
 
   static double _clamp01(double value) =>
       value < 0 ? 0 : (value > 1 ? 1 : value);
