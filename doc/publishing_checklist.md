@@ -40,21 +40,14 @@ flutter create .
 flutter run
 ```
 
-## 3. Optional: add screenshots
+## 3. Screenshots
 
-Pub.dev shows up to 10 screenshots. Take one or two of the example app
-(gallery and playground), save them as PNG (or WebP/JPG/GIF, under 4 MB each)
-in `screenshots/`, and add to `pubspec.yaml`:
-
-```yaml
-screenshots:
-  - description: Gallery of images on backdrops picked from their own colors.
-    path: screenshots/gallery.png
-  - description: Playground with live controls for strategy, opacity and more.
-    path: screenshots/playground.png
-```
-
-Screenshots are not required for the full 160 pub points.
+The `screenshots/` folder already contains images of the example app, and
+`pubspec.yaml` lists them under `screenshots:`, so pub.dev shows them in the
+package gallery. The README also embeds them through
+`raw.githubusercontent.com` URLs, which work once the files are pushed to the
+`main` branch. Each screenshot must be under 4 MB and its description under
+160 characters. To replace one, keep the file name or update the `path:` entry.
 
 ## 4. Dry run
 

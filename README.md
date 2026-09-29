@@ -22,8 +22,44 @@ ImageBackdrop.image(
 That is the whole integration: the logo is shown on a container whose color
 was picked from the logo itself.
 
+## See it in action
+
+![Overview of image_color_backdrop: styles, gradients, the live playground and whole-page tinting](https://raw.githubusercontent.com/1shabbirhussain/image_color_backdrop/main/screenshots/overview.png)
+
+Every screenshot comes from the [example app](example), which you can run
+yourself. The same logos get a different background depending on the strategy
+and style you choose.
+
+| Styles | Gradients and sampling |
+| :---: | :---: |
+| ![Solid, soft, pastel and deep styles](https://raw.githubusercontent.com/1shabbirhussain/image_color_backdrop/main/screenshots/gallery_styles.png) | ![Vibrant strategy, edge sampling, tonal and palette gradients](https://raw.githubusercontent.com/1shabbirhussain/image_color_backdrop/main/screenshots/gallery_gradients.png) |
+| The same logos as solid, `soft`, `pastel` and `deep` backdrops. | `vibrant` strategy, edge sampling, tonal and palette gradients. |
+
+| Live playground | Use the color elsewhere |
+| :---: | :---: |
+| ![Playground with strategy, gradient, opacity, brightness and saturation controls](https://raw.githubusercontent.com/1shabbirhussain/image_color_backdrop/main/screenshots/playground.png) | ![A whole page and a custom card tinted by the tapped image](https://raw.githubusercontent.com/1shabbirhussain/image_color_backdrop/main/screenshots/use_the_color.png) |
+| Change every option and see the result instantly. The bar under the preview shows the extracted palette, with each color as wide as its share of the image. | The tapped image tints the whole page through a `BackdropController`; a card and a container are colored with `BackdropColorBuilder` and `ImageBackdrop`. |
+
+### How to get each look
+
+| Look | Code |
+| --- | --- |
+| Solid, dominant color (default) | `ImageBackdrop.image(image: logo)` |
+| Soft tint | `ImageBackdrop.image(image: logo, style: BackdropStyle.soft)` |
+| Pastel | `ImageBackdrop.image(image: logo, style: BackdropStyle.pastel)` |
+| Deep | `ImageBackdrop.image(image: logo, style: BackdropStyle.deep)` |
+| Vibrant color, ignore white backgrounds | `options: const BackdropOptions(strategy: BackdropStrategy.vibrant, ignoreNearWhite: true)` |
+| Match the color around the logo | `options: const BackdropOptions(region: BackdropRegion.edges)` |
+| Tonal gradient | `gradientMode: BackdropGradientMode.tonal` |
+| Palette gradient | `gradientMode: BackdropGradientMode.palette` |
+
+`soft` tints are translucent, so they take on the color of whatever is behind
+them. In the screenshots that is a dark page, so they look dark; on a white
+page the same style gives a light tint.
+
 ## Contents
 
+- [See it in action](#see-it-in-action)
 - [Features](#features)
 - [Installation](#installation)
 - [Quick start](#quick-start)
@@ -165,6 +201,8 @@ Or, equivalently, `ImageColorBackdrop.colorFromImageProvider(...)`,
 
 ### 5. Use the color somewhere else on the screen
 
+![A page tinted by the selected image](https://raw.githubusercontent.com/1shabbirhussain/image_color_backdrop/main/screenshots/use_the_color.png)
+
 ```dart
 final controller = BackdropController(
   style: const BackdropStyle(opacity: 0.85),
@@ -201,6 +239,8 @@ controller.dispose();
 | analyze pixels I already have | `ImageColorBackdrop.paletteFromRgba` |
 
 ## Controlling the color: BackdropStyle
+
+![The same logos with solid, soft, pastel and deep styles](https://raw.githubusercontent.com/1shabbirhussain/image_color_backdrop/main/screenshots/gallery_styles.png)
 
 `BackdropStyle` turns the picked color into the final one. Steps are applied in
 this order: saturation, brightness, blend, contrast, opacity.
@@ -423,6 +463,8 @@ Yes. The same pixels and options always give the same palette on every
 platform.
 
 ## Example app
+
+![The example app's playground](https://raw.githubusercontent.com/1shabbirhussain/image_color_backdrop/main/screenshots/playground.png)
 
 A complete example (gallery, live playground, "use the color elsewhere") is in
 [`example/`](example). To run it:

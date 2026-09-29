@@ -15,6 +15,18 @@ environment:
   sdk: ^3.8.0
   flutter: ">=3.32.0"
 
+screenshots:
+  - description: Overview of styles, gradients, the live playground and whole-page tinting.
+    path: screenshots/overview.png
+  - description: The same logos as solid, soft, pastel and deep backdrops.
+    path: screenshots/gallery_styles.png
+  - description: Vibrant strategy, edge sampling, tonal and palette gradients.
+    path: screenshots/gallery_gradients.png
+  - description: Live playground with strategy, gradient, opacity, brightness and saturation controls.
+    path: screenshots/playground.png
+  - description: A whole page and a custom card tinted by the tapped image.
+    path: screenshots/use_the_color.png
+
 platforms:
   android:
   ios:
